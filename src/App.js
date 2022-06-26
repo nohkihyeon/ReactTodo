@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
- import logo from './logo.svg';
- import './App.css';
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import TodoTemplate from './components/TodoTemplate';
+import TodoHead from './components/TodoHead';
+import TodoList from './components/TodoList';
+import TodoCreate from './components/TodoCreate';
+import { TodoProvider } from './TodoContext';
 
- class Subject extends Component {
-   render(){
-     return (
-       <header>
-           <h1>WEB</h1>
-           world wide web!
-       </header>  
-     );
-   }
- }
-
- class App extends Component {
-   render() {
-     return (
-       <div className="App">
-         Hello, React!!
-         <Subject></Subject>
-       </div>
-     );
-   }
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #e9ecef
   }
+`;
+function App() {
+  return (
+    <TodoProvider>
+      <GlobalStyle />
+      <TodoTemplate>
+        <TodoHead />
+        <TodoList />
+        <TodoCreate />
+      </TodoTemplate>
+    </TodoProvider>
+  );
+}
 
-  export default App;
+export default App;
